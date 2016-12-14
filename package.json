@@ -1,0 +1,35 @@
+{
+  "name": "@scola/core",
+  "version": "0.0.0",
+  "description": "Core",
+  "repository": "github:scola84/node-core",
+  "author": "M.C. van den Boogaart <scola@kvdb.name>",
+  "license": "MIT",
+  "main": "./dist/core.js",
+  "jsnext:main": "index.js",
+  "dependencies": {
+    "@scola/cache": "^1.0.0",
+    "@scola/error": "^4.2.0",
+    "@scola/i18n": "^4.0.0",
+    "@scola/validator": "^5.2.0",
+    "@scola/websocket": "^3.0.3"
+  },
+  "devDependencies": {
+    "rollup": "^0.36.3",
+    "rollup-plugin-buble": "^0.14.0",
+    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-node-builtins": "^2.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-watch": "^2.5.0",
+    "uglify-js": "^2.7.4"
+  },
+  "scripts": {
+    "build": "npm run cleanup && npm run rollup --",
+    "build:min": "npm run build && npm run min",
+    "cleanup": "rm -rf dist",
+    "gzip": "gzip -9 -k dist/*",
+    "min": "uglifyjs dist/core.js -m -o dist/core.min.js",
+    "prepublish": "npm run build:min",
+    "rollup": "rollup -c"
+  }
+}
